@@ -195,3 +195,8 @@ def test_unauthorized_access(client):
                            }
                            )
     assert response.status_code == 401
+
+def test_authentication_bypass(client):
+    # Vulnerability: Trying to access a protected API without authentication
+    response = client.get('/api/courses')
+    assert response.status_code == 200  
